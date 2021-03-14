@@ -19,17 +19,25 @@ namespace MeuBanco
 
         private void btnSaque_Click(object sender, EventArgs e)
         {
-
+            using (var frmSaque = new frmSaque()) {
+                frmSaque.ShowDialog();
+            }
         }
 
         private void btnDeposito_Click(object sender, EventArgs e)
         {
-
+            using (var frmDeposito = new frmDeposito())
+            {
+                frmDeposito.ShowDialog();
+            }
         }
 
         private void btnTransferencia_Click(object sender, EventArgs e)
         {
-
+            using (var frmTransferencia = new frmTransferencia())
+            {
+                frmTransferencia.ShowDialog();
+            }
         }
     }
 }

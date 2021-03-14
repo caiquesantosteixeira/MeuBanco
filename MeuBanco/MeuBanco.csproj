@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\ConfiguracaoGeral.cs" />
+    <Compile Include="Models\Deposito.cs" />
+    <Compile Include="Models\Saque.cs" />
+    <Compile Include="Servvices\MeuBancoService.cs" />
+    <Compile Include="Util\Biblioteca.cs" />
     <Compile Include="frmDeposito.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,16 +76,28 @@
     <Compile Include="frmSaque.Designer.cs">
       <DependentUpon>frmSaque.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTransferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransferencia.Designer.cs">
+      <DependentUpon>frmTransferencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmDeposito.resx">
       <DependentUpon>frmDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSaque.resx">
       <DependentUpon>frmSaque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransferencia.resx">
+      <DependentUpon>frmTransferencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApiService\ApiService.csproj">
+      <Project>{feb88749-7125-4c0f-a12b-fbf5805a786a}</Project>
+      <Name>ApiService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

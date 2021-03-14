@@ -31,7 +31,7 @@ namespace MeuBanco
         {
             this.txtSaque = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSacar = new System.Windows.Forms.Button();
+            this.btnDepositar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSaque
@@ -50,21 +50,22 @@ namespace MeuBanco
             this.label1.TabIndex = 1;
             this.label1.Text = "Valor";
             // 
-            // btnSacar
+            // btnDepositar
             // 
-            this.btnSacar.Location = new System.Drawing.Point(190, 45);
-            this.btnSacar.Name = "btnSacar";
-            this.btnSacar.Size = new System.Drawing.Size(107, 24);
-            this.btnSacar.TabIndex = 2;
-            this.btnSacar.Text = "Depositar";
-            this.btnSacar.UseVisualStyleBackColor = true;
+            this.btnDepositar.Location = new System.Drawing.Point(190, 45);
+            this.btnDepositar.Name = "btnDepositar";
+            this.btnDepositar.Size = new System.Drawing.Size(107, 24);
+            this.btnDepositar.TabIndex = 2;
+            this.btnDepositar.Text = "Depositar";
+            this.btnDepositar.UseVisualStyleBackColor = true;
+            this.btnDepositar.Click += new System.EventHandler(this.btnDepositar_Click);
             // 
             // frmDeposito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 115);
-            this.Controls.Add(this.btnSacar);
+            this.Controls.Add(this.btnDepositar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSaque);
             this.Name = "frmDeposito";
@@ -78,6 +79,6 @@ namespace MeuBanco
 
         private System.Windows.Forms.TextBox txtSaque;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSacar;
+        private System.Windows.Forms.Button btnDepositar;
     }
 }

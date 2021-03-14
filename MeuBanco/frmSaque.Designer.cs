@@ -58,6 +58,7 @@ namespace MeuBanco
             this.btnSacar.TabIndex = 2;
             this.btnSacar.Text = "Sacar";
             this.btnSacar.UseVisualStyleBackColor = true;
+            this.btnSacar.Click += new System.EventHandler(this.btnSacar_Click);
             // 
             // frmSaque
             // 

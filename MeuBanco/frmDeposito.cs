@@ -1,4 +1,9 @@
-﻿using System;
+﻿using ApiService;
+using JGourmet.UTIL;
+using MeuBanco.Models;
+using MeuBanco.Servvices;
+using MonitorCompre.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +20,29 @@ namespace MeuBanco
         public frmDeposito()
         {
             InitializeComponent();
+            txtSaque.ToMonetario();
+        }
+
+        private void btnDepositar_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoDTO.GetInstance.ConfSync = new ConfSync();
+            ConfiguracaoDTO.GetInstance.ConfSync.Host = "https://localhost:44395/api/";
+            ConfiguracaoDTO.GetInstance.ConfSync.TypeAuthentication = ApiService.Util.TypeAuthentication.None;
+   
+            var deposito = new Deposito();
+            deposito.IdCliente = 1;
+            deposito.Valor = txtSaque.Text.ToString().ToDecimal();
+
+            var enviado = MeuBancoService.PostDeposito(deposito);
+
+            if (enviado)
+            {
+                MessageBox.Show("Deposito efetuado com sucesso!");
+            }
+            else 
+            {
+                MessageBox.Show("Erro ao efetuar depósito!");
+            }
         }
     }
 }

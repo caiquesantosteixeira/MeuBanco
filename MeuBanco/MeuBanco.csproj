@@ -56,6 +56,7 @@
     <Compile Include="Models\ConfiguracaoGeral.cs" />
     <Compile Include="Models\Deposito.cs" />
     <Compile Include="Models\Saque.cs" />
+    <Compile Include="Models\Transferencia.cs" />
     <Compile Include="Servvices\MeuBancoService.cs" />
     <Compile Include="Util\Biblioteca.cs" />
     <Compile Include="frmDeposito.cs">

@@ -60,6 +60,20 @@ namespace MeuBanco.Servvices
             }
         }
 
+        public static bool PostTransferencia(Transferencia transferencia)
+        {
+            bool ret = false;
+            var retorno = ApiService.Http.Metodo.POST<Transferencia, RetornoApi<Transferencia>>(transferencia, ref ret, $"v1/transferencia");
+            if (retorno != null && retorno.Data != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static Cliente GetCliente(string cpf)
         {
             bool ret = false;

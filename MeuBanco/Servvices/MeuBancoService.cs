@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MeuBanco.Servvices
 {
@@ -36,28 +37,30 @@ namespace MeuBanco.Servvices
         {
             bool ret = false;
             var retorno = ApiService.Http.Metodo.POST<Cliente, RetornoApi<Cliente>>(cliente, ref ret, $"v1/Clientes");
-            if (retorno != null && retorno.Data != null)
+            if (retorno != null && retorno.Sucesso)
             {
                 return true;
             }
             else
             {
+                MessageBox.Show(retorno != null ? retorno.Mensagem:"Erro");
                 return false;
             }
 
         }
 
-        public static bool PostUsuario(Usuario usuario)
+        public static Usuario PostUsuario(Usuario usuario)
         {
             bool ret = false;
-            var retorno = ApiService.Http.Metodo.POST<Usuario, RetornoApi<Cliente>>(usuario, ref ret, $"v1/Usuarios");
-            if (retorno != null && retorno.Data != null)
+            var retorno = ApiService.Http.Metodo.POST<Usuario, RetornoApi<Usuario>>(usuario, ref ret, $"v1/Usuarios");
+            if (retorno.Sucesso)
             {
-                return true;
+                return retorno.Data;
             }
             else
             {
-                return false;
+                MessageBox.Show(retorno != null ? retorno.Mensagem : "Erro");
+                return null;
             }
 
         }
@@ -66,12 +69,13 @@ namespace MeuBanco.Servvices
         {
             bool ret = false;
             var retorno = ApiService.Http.Metodo.PUT<Cliente, RetornoApi<Cliente>>(cliente, ref ret, $"v1/Clientes");
-            if (retorno != null && retorno.Data != null)
+            if (retorno != null && retorno.Sucesso)
             {
                 return true;
             }
             else
             {
+                MessageBox.Show(retorno != null ? retorno.Mensagem : "Erro");
                 return false;
             }
 
@@ -81,11 +85,12 @@ namespace MeuBanco.Servvices
         {
             bool ret = false;
             var retorno = ApiService.Http.Metodo.POST<Deposito, RetornoApi<Deposito>>(deposito, ref ret, $"v1/Deposito");
-            if (retorno != null && retorno.Data != null)
+            if (retorno != null && retorno.Sucesso)
             {
                 return true;
             }
             else {
+                MessageBox.Show(retorno != null ? retorno.Mensagem : "Erro");
                 return false;
             }
             
@@ -95,12 +100,13 @@ namespace MeuBanco.Servvices
         {
             bool ret = false;
             var retorno = ApiService.Http.Metodo.POST<Saque, RetornoApi<Deposito>>(saque, ref ret, $"v1/Saque");
-            if (retorno != null && retorno.Data != null)
+            if (retorno != null && retorno.Sucesso)
             {
                 return true;
             }
             else
             {
+                MessageBox.Show(retorno != null ? retorno.Mensagem : "Erro");
                 return false;
             }
         }
@@ -109,12 +115,13 @@ namespace MeuBanco.Servvices
         {
             bool ret = false;
             var retorno = ApiService.Http.Metodo.POST<Transferencia, RetornoApi<Transferencia>>(transferencia, ref ret, $"v1/transferencia");
-            if (retorno != null && retorno.Data != null)
+            if (retorno != null && retorno.Sucesso)
             {
                 return true;
             }
             else
             {
+                MessageBox.Show(retorno != null ? retorno.Mensagem : "Erro");
                 return false;
             }
         }

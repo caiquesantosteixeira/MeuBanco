@@ -140,6 +140,7 @@ namespace ApiService.Http
                 }
                 else
                 {
+                    obj = JsonConvert.DeserializeObject<R>(result);
                     ApiLog.Log.FazLog(
                         Mensagem: $"REQUEST [{_url}] :{json}",
                         Versao: ConfiguracaoDTO.GetInstance.Version);

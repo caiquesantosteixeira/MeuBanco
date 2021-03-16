@@ -25,6 +25,17 @@ namespace MeuBanco
             if (txtSenha.Text.Trim() != txtConfirmarSenha.Text.Trim())
             {
                 MessageBox.Show("Senha e confirmação de senha divergem.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtCpf.Text.Trim().RemoverPontos()) || string.IsNullOrEmpty(txtSenha.Text.Trim())) {
+                MessageBox.Show("Dados inválidos");
+                return;
+            }
+
+            if (txtCpf.Text.Trim().RemoverPontos().Length != 11) {
+                MessageBox.Show("cpf inválido");
+                return;
             }
 
             var usuario = new Usuario { 
@@ -33,19 +44,16 @@ namespace MeuBanco
                 Email = ""
             };
 
-            MeuBancoService.PostUsuario(usuario);
-
-
-       
-
+            var usuarioRetorno = MeuBancoService.PostUsuario(usuario);
             var cliente = new Cliente();
-
-            cliente.Nome = txtNome.Text;
-            cliente.Cpf = txtCpf.Text.RemoverPontos();
-            cliente.Saldo = 0m;
-            cliente.Senha = txtSenha.Text.Trim();
-
-          
+            if (usuarioRetorno != null)
+            {
+                cliente.Nome = txtNome.Text;
+                cliente.Cpf = txtCpf.Text.RemoverPontos();
+                cliente.Saldo = 0m;
+                cliente.Senha = txtSenha.Text.Trim();
+                cliente.IdUsuario = usuarioRetorno.Id;
+            }
 
             if (validarCliente(cliente))
             {

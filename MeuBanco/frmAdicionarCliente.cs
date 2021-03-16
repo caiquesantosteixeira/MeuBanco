@@ -1,4 +1,5 @@
-﻿using MeuBanco.Models;
+﻿using JGourmet.UTIL;
+using MeuBanco.Models;
 using MeuBanco.Servvices;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,13 @@ namespace MeuBanco
             var cliente = new Cliente();
 
             cliente.Nome = txtNome.Text;
-            cliente.Cpf = txtCpf.Text;
+            cliente.Cpf = txtCpf.Text.RemoverPontos();
             cliente.Saldo = 0m;
-            cliente.Senha = txtSenha.Text;
+            cliente.Senha = txtSenha.Text.Trim();
+
+            if (txtSenha.Text.Trim() != txtConfirmarSenha.Text.Trim()) {
+                MessageBox.Show("Senha e confirmação de senha divergem.");
+            }
 
             if (validarCliente(cliente))
             {

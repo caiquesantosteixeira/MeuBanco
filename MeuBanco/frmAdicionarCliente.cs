@@ -22,6 +22,22 @@ namespace MeuBanco
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            if (txtSenha.Text.Trim() != txtConfirmarSenha.Text.Trim())
+            {
+                MessageBox.Show("Senha e confirmação de senha divergem.");
+            }
+
+            var usuario = new Usuario { 
+                UserName = txtCpf.Text.Trim().RemoverPontos(),
+                Senha = txtSenha.Text.Trim(),
+                Email = ""
+            };
+
+            MeuBancoService.PostUsuario(usuario);
+
+
+       
+
             var cliente = new Cliente();
 
             cliente.Nome = txtNome.Text;
@@ -29,9 +45,7 @@ namespace MeuBanco
             cliente.Saldo = 0m;
             cliente.Senha = txtSenha.Text.Trim();
 
-            if (txtSenha.Text.Trim() != txtConfirmarSenha.Text.Trim()) {
-                MessageBox.Show("Senha e confirmação de senha divergem.");
-            }
+          
 
             if (validarCliente(cliente))
             {

@@ -43,6 +43,7 @@ namespace MeuBanco
         {
             if (_clienteDestinatario == null) {
                 MessageBox.Show("Cliente destinatário não adicionado.");
+                return;
             }
             if (_cliente.Saldo < txtValor.Text.ToString().ToDecimal())
             {
@@ -59,6 +60,12 @@ namespace MeuBanco
 
             if (enviado)
             {
+                _cliente.Saldo -= transferencia.Valor;
+                MeuBancoService.PutCliente(_cliente);
+
+                _clienteDestinatario.Saldo += transferencia.Valor;
+                MeuBancoService.PutCliente(_clienteDestinatario);
+
                 MessageBox.Show("Transferencia efetuada com sucesso!");
             }
             else

@@ -36,6 +36,8 @@ namespace MeuBanco
 
             if (enviado)
             {
+                _cliente.Saldo += deposito.Valor;
+                MeuBancoService.PutCliente(_cliente);
                 MessageBox.Show("Deposito efetuado com sucesso!");
             }
             else 

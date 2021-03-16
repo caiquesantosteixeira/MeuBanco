@@ -32,13 +32,13 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.lblVersao = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCadastrar = new System.Windows.Forms.Button();
             this.lblLoader = new System.Windows.Forms.Label();
             this.btnLog = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.btnCadastrar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(501, 332);
             this.panel2.TabIndex = 9;
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.BackColor = System.Drawing.Color.White;
+            this.btnCadastrar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCadastrar.Font = new System.Drawing.Font("Tahoma", 9.75F);
+            this.btnCadastrar.ForeColor = System.Drawing.Color.Red;
+            this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastrar.Location = new System.Drawing.Point(158, 206);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(163, 27);
+            this.btnCadastrar.TabIndex = 46;
+            this.btnCadastrar.Text = "Cadastre-se";
+            this.btnCadastrar.UseVisualStyleBackColor = false;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // lblLoader
             // 
@@ -118,9 +134,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label1.Location = new System.Drawing.Point(78, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
+            this.label1.Size = new System.Drawing.Size(30, 16);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Usuário";
+            this.label1.Text = "CPF";
             // 
             // txtSenha
             // 
@@ -140,22 +156,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(341, 26);
             this.txtUsuario.TabIndex = 0;
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.BackColor = System.Drawing.Color.White;
-            this.btnCadastrar.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCadastrar.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.btnCadastrar.ForeColor = System.Drawing.Color.Red;
-            this.btnCadastrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrar.Location = new System.Drawing.Point(158, 206);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(163, 27);
-            this.btnCadastrar.TabIndex = 46;
-            this.btnCadastrar.Text = "Cadastre-se";
-            this.btnCadastrar.UseVisualStyleBackColor = false;
-            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // frmLogin
             // 

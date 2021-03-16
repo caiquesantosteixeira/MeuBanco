@@ -39,6 +39,9 @@ namespace MeuBanco
 
             if (enviado)
             {
+                _cliente.Saldo -= Saque.Valor;
+                MeuBancoService.PutCliente(_cliente);
+
                 MessageBox.Show("Saque efetuado com sucesso!");
             }
             else

@@ -35,7 +35,7 @@ namespace MeuBanco
             this.label2 = new System.Windows.Forms.Label();
             this.txtCpf = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblClienteDest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtValor
@@ -62,6 +62,7 @@ namespace MeuBanco
             this.btnTransferir.TabIndex = 2;
             this.btnTransferir.Text = "Transferir";
             this.btnTransferir.UseVisualStyleBackColor = true;
+            this.btnTransferir.Click += new System.EventHandler(this.btnTransferir_Click);
             // 
             // label2
             // 
@@ -89,21 +90,21 @@ namespace MeuBanco
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // label3
+            // lblClienteDest
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Cliente Destinatário:";
+            this.lblClienteDest.AutoSize = true;
+            this.lblClienteDest.Location = new System.Drawing.Point(30, 76);
+            this.lblClienteDest.Name = "lblClienteDest";
+            this.lblClienteDest.Size = new System.Drawing.Size(101, 13);
+            this.lblClienteDest.TabIndex = 6;
+            this.lblClienteDest.Text = "Cliente Destinatário:";
             // 
             // frmTransferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(313, 175);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblClienteDest);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCpf);
@@ -125,6 +126,6 @@ namespace MeuBanco
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCpf;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblClienteDest;
     }
 }

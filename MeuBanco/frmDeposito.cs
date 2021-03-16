@@ -17,20 +17,19 @@ namespace MeuBanco
 {
     public partial class frmDeposito : Form
     {
-        public frmDeposito()
+        private Cliente _cliente;
+        public frmDeposito(Cliente cliente)
         {
+            _cliente = cliente;
             InitializeComponent();
             txtSaque.ToMonetario();
         }
 
         private void btnDepositar_Click(object sender, EventArgs e)
         {
-            ConfiguracaoDTO.GetInstance.ConfSync = new ConfSync();
-            ConfiguracaoDTO.GetInstance.ConfSync.Host = "https://localhost:44395/api/";
-            ConfiguracaoDTO.GetInstance.ConfSync.TypeAuthentication = ApiService.Util.TypeAuthentication.None;
-   
+            
             var deposito = new Deposito();
-            deposito.IdCliente = 1;
+            deposito.IdCliente = _cliente.Id;
             deposito.Valor = txtSaque.Text.ToString().ToDecimal();
 
             var enviado = MeuBancoService.PostDeposito(deposito);
@@ -43,6 +42,7 @@ namespace MeuBanco
             {
                 MessageBox.Show("Erro ao efetuar depósito!");
             }
+            Close();
         }
     }
 }

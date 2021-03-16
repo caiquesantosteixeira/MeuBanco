@@ -16,47 +16,56 @@ namespace MeuBanco
 {
     public partial class frmTransferencia : Form
     {
-        public frmTransferencia()
+        public Cliente _cliente;
+        public Cliente _clienteDestinatario;
+        public frmTransferencia(Cliente cliente)
         {
+            _cliente = cliente;
             InitializeComponent();
             txtValor.ToMonetario();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            txtCpf.Text.RemoverPontos();
-            var cliente = MeuBancoService.GetCliente("05890299590");
-            if (cliente != null)
+            _clienteDestinatario = MeuBancoService.GetCliente(txtCpf.Text.RemoverPontos());
+
+            if (_clienteDestinatario != null)
             {
-                if (cliente.Saldo < txtValor.Text.ToString().ToDecimal())
-                {
-                    MessageBox.Show("Saldo insuficiente para transferência.");
-                    return;
-                }
-
-                ConfiguracaoDTO.GetInstance.ConfSync = new ConfSync();
-                ConfiguracaoDTO.GetInstance.ConfSync.Host = "https://localhost:44395/api/";
-                ConfiguracaoDTO.GetInstance.ConfSync.TypeAuthentication = ApiService.Util.TypeAuthentication.None;
-
-                var transferencia = new Transferencia();
-                transferencia.IdClienteRemetente = cliente.Id;
-                transferencia.IdClienteDestinatario = 1;
-                transferencia.Valor = txtValor.Text.ToString().ToDecimal();
-
-                var enviado = MeuBancoService.PostTransferencia(transferencia);
-
-                if (enviado)
-                {
-                    MessageBox.Show("Transferencia efetuada com sucesso!");
-                }
-                else
-                {
-                    MessageBox.Show("Erro ao efetuar Transferencia!");
-                }
+                lblClienteDest.Text = "Cliente Destinatário: " + _clienteDestinatario.Nome ;
+                lblClienteDest.Refresh();
             }
             else {
                 MessageBox.Show("Cliente inexistente");
             }
+        }
+
+        private void btnTransferir_Click(object sender, EventArgs e)
+        {
+            if (_clienteDestinatario == null) {
+                MessageBox.Show("Cliente destinatário não adicionado.");
+            }
+            if (_cliente.Saldo < txtValor.Text.ToString().ToDecimal())
+            {
+                MessageBox.Show("Saldo insuficiente para transferência.");
+                return;
+            }
+
+            var transferencia = new Transferencia();
+            transferencia.IdClienteRemetente = _cliente.Id;
+            transferencia.IdClienteDestinatario = _clienteDestinatario.Id;
+            transferencia.Valor = txtValor.Text.ToString().ToDecimal();
+
+            var enviado = MeuBancoService.PostTransferencia(transferencia);
+
+            if (enviado)
+            {
+                MessageBox.Show("Transferencia efetuada com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Erro ao efetuar Transferencia!");
+            }
+            Close();
         }
     }
 }

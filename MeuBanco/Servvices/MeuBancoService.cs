@@ -32,6 +32,21 @@ namespace MeuBanco.Servvices
 
         }
 
+        public static bool PostCliente(Cliente cliente)
+        {
+            bool ret = false;
+            var retorno = ApiService.Http.Metodo.POST<Cliente, RetornoApi<Cliente>>(cliente, ref ret, $"v1/Clientes");
+            if (retorno != null && retorno.Data != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
         public static bool PostDeposito(Deposito deposito)
         {
             bool ret = false;

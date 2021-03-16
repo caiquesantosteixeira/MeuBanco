@@ -32,6 +32,10 @@
 
         [JsonProperty("tokenType")]
         public string TokenType { get; set; }
+
+        [JsonProperty("usuario")]
+        public string usuario { get; set; }
+        
     }
 
     public partial class UserToken

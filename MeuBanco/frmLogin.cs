@@ -7,8 +7,9 @@ using System.IO;
 using System.Windows.Forms;
 using MeuBanco;
 using MonitorCompre.models;
+using JGourmet.UTIL;
 
-namespace MonitorCompre
+namespace MeuBanco
 {
     public partial class frmLogin : Form
     {
@@ -32,15 +33,13 @@ namespace MonitorCompre
                     Directory.CreateDirectory(diretorio);
             }
 
-            config.Host = "https://localhost:44395/api/v1/";
-            config.TypeAuthentication = ApiService.Util.TypeAuthentication.None;
-            config.TokenFixed = false;
-            //config.EndPointGetToken = "v1/Usuarios/Logar-Form";
-            bool erros = false;
+            config.Host = "https://localhost:44395/api/";
+            config.TypeAuthentication = ApiService.Util.TypeAuthentication.BearerToken;
+            config.TokenFixed = true;
+            config.EndPointGetToken = "v1/Usuarios/Logar-Form";
 
             if (txtUsuario.Text?.Trim() == "" || txtSenha.Text?.Trim() == "")
             {
-                erros = true;
                 MessageBox.Show("Usuário ou Senha Inválidos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -48,8 +47,8 @@ namespace MonitorCompre
   
                 config.Body = new Body
                 {
-                    Usuario = txtUsuario.Text?.Trim(),
-                    Senha = CriptografiaRijndael.Encryptar(txtSenha.Text?.Trim())
+                    Usuario = txtUsuario.Text?.Trim().RemoverPontos(),
+                    Senha = txtSenha.Text.Trim()
                 };
 
                 lblLoader.Text = "Aguarde...";
@@ -59,10 +58,10 @@ namespace MonitorCompre
                     lblLoader.Text = "";
                     lblLoader.Refresh();
 
-
-                    // salva novas config
+                var usuario = resp.Data.Data.UserToken.Usuario;
+                var cliente = MeuBancoService.GetCliente(usuario);
       
-                    using (var frmPrincipal = new frmPrincipal())
+                    using (var frmPrincipal = new frmPrincipal(cliente))
                     {
                         frmPrincipal.ShowDialog();
                     }
@@ -76,5 +75,18 @@ namespace MonitorCompre
                     lblLoader.ForeColor = Color.Red;
                 }
             }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoDTO.GetInstance.ConfSync = new ConfSync();
+            ConfiguracaoDTO.GetInstance.ConfSync.Host = "https://localhost:44395/api/";
+            ConfiguracaoDTO.GetInstance.ConfSync.TypeAuthentication = ApiService.Util.TypeAuthentication.None;
+            ConfiguracaoDTO.GetInstance.ConfSync.TokenFixed = false;
+
+            using (var frmPrincipal = new frmAdicionarCliente())
+            {
+                frmPrincipal.ShowDialog();
+            }
         }
+    }
 }

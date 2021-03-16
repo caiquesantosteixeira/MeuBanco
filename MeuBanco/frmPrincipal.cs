@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeuBanco.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,21 +13,23 @@ namespace MeuBanco
 {
     public partial class frmPrincipal : Form
     {
-        public frmPrincipal()
+        private Cliente _cliente;
+        public frmPrincipal(Cliente cliente)
         {
+            _cliente = cliente;
             InitializeComponent();
         }
 
         private void btnSaque_Click(object sender, EventArgs e)
         {
-            using (var frmSaque = new frmSaque()) {
+            using (var frmSaque = new frmSaque(_cliente)) {
                 frmSaque.ShowDialog();
             }
         }
 
         private void btnDeposito_Click(object sender, EventArgs e)
         {
-            using (var frmDeposito = new frmDeposito())
+            using (var frmDeposito = new frmDeposito(_cliente))
             {
                 frmDeposito.ShowDialog();
             }
@@ -34,7 +37,7 @@ namespace MeuBanco
 
         private void btnTransferencia_Click(object sender, EventArgs e)
         {
-            using (var frmTransferencia = new frmTransferencia())
+            using (var frmTransferencia = new frmTransferencia(_cliente))
             {
                 frmTransferencia.ShowDialog();
             }

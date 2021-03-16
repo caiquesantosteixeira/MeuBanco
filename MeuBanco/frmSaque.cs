@@ -16,27 +16,23 @@ namespace MeuBanco
 {
     public partial class frmSaque : Form
     {
-        public frmSaque()
+        private Cliente _cliente;
+        public frmSaque(Cliente cliente)
         {
+            _cliente = cliente;
             InitializeComponent();
             txtSaque.ToMonetario();
         }
 
         private void btnSacar_Click(object sender, EventArgs e)
         {
-            ConfiguracaoDTO.GetInstance.ConfSync = new ConfSync();
-            ConfiguracaoDTO.GetInstance.ConfSync.Host = "https://localhost:44395/api/";
-            ConfiguracaoDTO.GetInstance.ConfSync.TypeAuthentication = ApiService.Util.TypeAuthentication.None;
-
-            var cliente = MeuBancoService.GetCliente("05890299590");
-
-            if (cliente.Saldo < txtSaque.Text.ToString().ToDecimal())
+            if (_cliente.Saldo < txtSaque.Text.ToString().ToDecimal())
             {
                 MessageBox.Show("Saldo insuficiente para saque.");
                 return;
             }
             var Saque = new Saque();
-            Saque.IdCliente = cliente.Id;
+            Saque.IdCliente = _cliente.Id;
             Saque.Valor = txtSaque.Text.ToString().ToDecimal();
 
             var enviado = MeuBancoService.PostSaque(Saque);
@@ -49,6 +45,7 @@ namespace MeuBanco
             {
                 MessageBox.Show("Erro ao efetuar depósito!");
             }
+            Close();
         }
     }
 }

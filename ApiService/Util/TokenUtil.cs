@@ -83,7 +83,7 @@ namespace ApiService.Util
                 }
                 if (!string.IsNullOrWhiteSpace(confSync.Body.Senha))
                 {
-                    body.Add("Senha", CriptografiaRijndael.Decryptar(confSync.Body.Senha));
+                    body.Add("Senha", confSync.Body.Senha);
                 }
 
                 var response = client.PostAsync(confSync.EndPointGetToken, new FormUrlEncodedContent(body))?.Result;         

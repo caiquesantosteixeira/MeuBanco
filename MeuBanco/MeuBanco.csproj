@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAdicionarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdicionarCliente.Designer.cs">
+      <DependentUpon>frmAdicionarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAdicionarCliente.resx">
+      <DependentUpon>frmAdicionarCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDeposito.resx">
       <DependentUpon>frmDeposito.cs</DependentUpon>
     </EmbeddedResource>

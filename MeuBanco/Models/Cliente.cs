@@ -12,6 +12,8 @@ namespace MeuBanco.Models
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public decimal Saldo { get; set; }
+
+        public string Senha { get; set; }
         public string IdUsuario { get; set; }
     }
 }

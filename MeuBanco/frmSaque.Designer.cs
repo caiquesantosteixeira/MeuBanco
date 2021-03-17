@@ -70,6 +70,7 @@ namespace MeuBanco
             this.Controls.Add(this.txtSaque);
             this.Name = "frmSaque";
             this.Text = "frmSaque";
+            this.Load += new System.EventHandler(this.frmSaque_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

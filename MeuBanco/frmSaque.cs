@@ -39,6 +39,7 @@ namespace MeuBanco
 
             if (enviado)
             {
+                _cliente = MeuBancoService.GetCliente(_cliente.Cpf);
                 _cliente.Saldo -= Saque.Valor;
                 MeuBancoService.PutCliente(_cliente);
 
@@ -49,6 +50,11 @@ namespace MeuBanco
                 MessageBox.Show("Erro ao efetuar depósito!");
             }
             Close();
+        }
+
+        private void frmSaque_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

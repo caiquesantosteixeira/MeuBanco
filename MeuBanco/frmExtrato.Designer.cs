@@ -30,20 +30,25 @@ namespace MeuBanco
         private void InitializeComponent()
         {
             this.gridDepositos = new System.Windows.Forms.DataGridView();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gridSaques = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grisTransferencias = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridRecebidas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridDepositos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaques)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grisTransferencias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRecebidas)).BeginInit();
             this.SuspendLayout();
             // 
             // gridDepositos
@@ -56,6 +61,16 @@ namespace MeuBanco
             this.gridDepositos.Name = "gridDepositos";
             this.gridDepositos.Size = new System.Drawing.Size(246, 150);
             this.gridDepositos.TabIndex = 0;
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
             // 
             // label1
             // 
@@ -80,19 +95,9 @@ namespace MeuBanco
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(23, 207);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.Size = new System.Drawing.Size(124, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Transferências";
-            // 
-            // Data
-            // 
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
+            this.label3.Text = "Transferências Enviadas";
             // 
             // gridSaques
             // 
@@ -136,11 +141,43 @@ namespace MeuBanco
             this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
+            // gridRecebidas
+            // 
+            this.gridRecebidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridRecebidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.gridRecebidas.Location = new System.Drawing.Point(347, 223);
+            this.gridRecebidas.Name = "gridRecebidas";
+            this.gridRecebidas.Size = new System.Drawing.Size(246, 150);
+            this.gridRecebidas.TabIndex = 8;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Data";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(344, 207);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(131, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Transferências Recebidas";
+            // 
             // frmExtrato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 596);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.gridRecebidas);
             this.Controls.Add(this.grisTransferencias);
             this.Controls.Add(this.gridSaques);
             this.Controls.Add(this.label3);
@@ -152,6 +189,7 @@ namespace MeuBanco
             ((System.ComponentModel.ISupportInitialize)(this.gridDepositos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSaques)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grisTransferencias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRecebidas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +209,9 @@ namespace MeuBanco
         private System.Windows.Forms.DataGridView grisTransferencias;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridView gridRecebidas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Label label4;
     }
 }

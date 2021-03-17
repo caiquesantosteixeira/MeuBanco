@@ -21,6 +21,9 @@ namespace MeuBanco
         public List<Saque> Saques;
 
         public List<Transferencia> Transferencias;
+
+
+        public List<Transferencia> TransferenciasRecebidas;
         public frmExtrato(Cliente cliente)
         {
             _cliente = cliente;
@@ -28,6 +31,7 @@ namespace MeuBanco
             Depositos = MeuBancoService.GetDepositos(cliente.Id);
             Saques = MeuBancoService.GetSaques(cliente.Id);
             Transferencias = MeuBancoService.GetTransferencias(cliente.Id);
+            TransferenciasRecebidas = MeuBancoService.GetTransferenciasRecebidas(cliente.Id);
             PreencherGridSaques();
             PreencherGridSTransf();
             PreencherGridDep();
@@ -64,6 +68,17 @@ namespace MeuBanco
                 var row = gridDepositos.Rows.Add();
                 gridDepositos[0, row].Value = item.Data;
                 gridDepositos[1, row].Value = item.Valor;
+            }
+        }
+
+        public void PreencherGridRecebidas()
+        {
+            gridRecebidas.Rows.Clear();
+            foreach (var item in TransferenciasRecebidas)
+            {
+                var row = gridRecebidas.Rows.Add();
+                gridRecebidas[0, row].Value = item.Data;
+                gridRecebidas[1, row].Value = item.Valor;
             }
         }
     }

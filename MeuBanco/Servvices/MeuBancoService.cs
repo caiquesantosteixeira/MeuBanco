@@ -181,5 +181,19 @@ namespace MeuBanco.Servvices
                 return null;
             }
         }
+
+        public static List<Transferencia> GetTransferenciasRecebidas(int idCliente)
+        {
+            bool ret = false;
+            var retorno = ApiService.Http.Metodo.GETALL<RetornoApi<List<Transferencia>>>($"v1/Transferencia/GetAllRecebidas?idCliente={idCliente}");
+            if (retorno != null)
+            {
+                return retorno.Data; ;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

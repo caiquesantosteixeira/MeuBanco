@@ -28,7 +28,7 @@ namespace MeuBanco
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtCpf.Text.Trim().RemoverPontos()) || string.IsNullOrEmpty(txtSenha.Text.Trim())) {
+            if (string.IsNullOrEmpty(txtConfirmarSenha.Text) || string.IsNullOrEmpty(txtSenha.Text) || string.IsNullOrEmpty(txtCpf.Text.Trim().RemoverPontos()) || string.IsNullOrEmpty(txtSenha.Text.Trim())) {
                 MessageBox.Show("Dados inválidos");
                 return;
             }

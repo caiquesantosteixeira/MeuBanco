@@ -32,6 +32,7 @@ namespace MeuBanco
             this.btnTransferencia = new System.Windows.Forms.Button();
             this.btnDeposito = new System.Windows.Forms.Button();
             this.btnSaque = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnTransferencia
@@ -64,11 +65,22 @@ namespace MeuBanco
             this.btnSaque.UseVisualStyleBackColor = true;
             this.btnSaque.Click += new System.EventHandler(this.btnSaque_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(31, 308);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(221, 66);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Extrato";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSaque);
             this.Controls.Add(this.btnDeposito);
             this.Controls.Add(this.btnTransferencia);
@@ -83,6 +95,7 @@ namespace MeuBanco
         private System.Windows.Forms.Button btnTransferencia;
         private System.Windows.Forms.Button btnDeposito;
         private System.Windows.Forms.Button btnSaque;
+        private System.Windows.Forms.Button button1;
     }
 }
 

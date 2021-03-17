@@ -42,5 +42,13 @@ namespace MeuBanco
                 frmTransferencia.ShowDialog();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (var frmExtrato = new frmExtrato(_cliente))
+            {
+                frmExtrato.ShowDialog();
+            }
+        }
     }
 }

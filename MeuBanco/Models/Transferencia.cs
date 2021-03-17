@@ -12,5 +12,7 @@ namespace MeuBanco.Models
         public int IdClienteRemetente { get; set; }
         public int IdClienteDestinatario { get; set; }
         public decimal Valor { get; set; }
+
+        public DateTime Data { get; set; }
     }
 }

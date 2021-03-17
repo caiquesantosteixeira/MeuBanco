@@ -139,5 +139,47 @@ namespace MeuBanco.Servvices
                 return null;
             }
         }
+
+        public static List<Deposito> GetDepositos(int idCliente)
+        {
+            bool ret = false;
+            var retorno = ApiService.Http.Metodo.GETALL<RetornoApi<List<Deposito>>>($"v1/Deposito?idCliente={idCliente}");
+            if (retorno != null )
+            {
+                return retorno.Data;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static List<Saque> GetSaques(int idCliente)
+        {
+            bool ret = false;
+            var retorno = ApiService.Http.Metodo.GETALL<RetornoApi<List<Saque>>>($"v1/Saque?idCliente={idCliente}");
+            if (retorno != null )
+            {
+                return  retorno.Data; ;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static List<Transferencia> GetTransferencias(int idCliente)
+        {
+            bool ret = false;
+            var retorno = ApiService.Http.Metodo.GETALL<RetornoApi<List<Transferencia>>>($"v1/Transferencia?idCliente={idCliente}");
+            if (retorno != null)
+            {
+                return  retorno.Data; ;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

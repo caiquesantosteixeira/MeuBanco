@@ -27,7 +27,14 @@ namespace MeuBanco
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+           
             _clienteDestinatario = MeuBancoService.GetCliente(txtCpf.Text.RemoverPontos());
+
+            if (_cliente.Cpf == _clienteDestinatario.Cpf)
+            {
+                MessageBox.Show("Esse é se próprio cpf, operação ilegal.");
+                return;
+            }
 
             if (_clienteDestinatario != null)
             {
@@ -41,6 +48,7 @@ namespace MeuBanco
 
         private void btnTransferir_Click(object sender, EventArgs e)
         {
+
             if (_clienteDestinatario == null) {
                 MessageBox.Show("Cliente destinatário não adicionado.");
                 return;
@@ -60,9 +68,11 @@ namespace MeuBanco
 
             if (enviado)
             {
+                _cliente = MeuBancoService.GetCliente(_cliente.Cpf);
                 _cliente.Saldo -= transferencia.Valor;
                 MeuBancoService.PutCliente(_cliente);
 
+                _clienteDestinatario = MeuBancoService.GetCliente(_clienteDestinatario.Cpf);
                 _clienteDestinatario.Saldo += transferencia.Valor;
                 MeuBancoService.PutCliente(_clienteDestinatario);
 

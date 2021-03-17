@@ -11,6 +11,6 @@ namespace MeuBanco.Models
         public int Id { get; set; }
         public int IdCliente { get; set; }
         public decimal Valor { get; set; }
-
+        public DateTime Data { get; set; }
     }
 }

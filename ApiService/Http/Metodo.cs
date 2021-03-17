@@ -45,9 +45,9 @@ namespace ApiService.Http
             return default(T);
         }
 
-        public static List<T> GETALL<T>(string url, int versao = 0)
+        public static T GETALL<T>(string url, int versao = 0)
         {
-            List<T> list = null;
+            T obj = default;
             try
             {
 
@@ -56,7 +56,7 @@ namespace ApiService.Http
                 var result = response.Content.ReadAsStringAsync().Result;
                 if (response.IsSuccessStatusCode)
                 {
-                    list = JsonConvert.DeserializeObject<List<T>>(result);
+                    obj = JsonConvert.DeserializeObject<T>(result);
                 }
                 //else
                 //{
@@ -74,7 +74,7 @@ namespace ApiService.Http
 
                 Console.Write(ex.Message);
             }
-            return list;
+            return obj;
         }
 
         public static HttpStatusCode DELETE(string url, string id, ref string result, int versao = 0)

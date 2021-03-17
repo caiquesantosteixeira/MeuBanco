@@ -52,6 +52,12 @@
     <Compile Include="frmAdicionarCliente.Designer.cs">
       <DependentUpon>frmAdicionarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmExtrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExtrato.Designer.cs">
+      <DependentUpon>frmExtrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDeposito.resx">
       <DependentUpon>frmDeposito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExtrato.resx">
+      <DependentUpon>frmExtrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
